@@ -1,3 +1,62 @@
 [gd_scene format=3 uid="uid://c3aonf4jvv5td"]
 
+[ext_resource type="PackedScene" uid="uid://s40yslw7i1sn" path="res://scenes/platform.tscn" id="1_014kd"]
+
+[sub_resource type="Animation" id="Animation_014kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-110, -138)]
+}
+
+[sub_resource type="Animation" id="Animation_bswci"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-110, -138), Vector2(-38, -138)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rus8k"]
+_data = {
+&"RESET": SubResource("Animation_014kd"),
+&"move": SubResource("Animation_bswci")
+}
+
 [node name="Level 1" type="Node2D" unique_id=781711050]
+
+[node name="Platform" parent="." unique_id=922851709 instance=ExtResource("1_014kd")]
+position = Vector2(-74, -27)
+
+[node name="Platform2" parent="." unique_id=2012567314 instance=ExtResource("1_014kd")]
+position = Vector2(61, -58)
+
+[node name="Platform3" parent="." unique_id=2048606836 instance=ExtResource("1_014kd")]
+position = Vector2(-110, -138)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform3" unique_id=53934664]
+libraries/ = SubResource("AnimationLibrary_rus8k")
+autoplay = &"move"
+
+[node name="Platform4" parent="." unique_id=185971161 instance=ExtResource("1_014kd")]
+position = Vector2(-110, -138)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform4" unique_id=830838943]
+libraries/ = SubResource("AnimationLibrary_rus8k")
+autoplay = &"move"
