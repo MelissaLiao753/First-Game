@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cknjmoclcdpdc" path="res://scenes/area_2d.tscn" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://hlclfoosa5ks" path="res://assets/sprites/world_tileset.png" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://d1ibf870yo2vq" path="res://scenes/player.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://s40yslw7i1sn" path="res://scenes/platform.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("3_iywne")
@@ -188,6 +189,43 @@ texture = ExtResource("3_iywne")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
+[sub_resource type="Animation" id="Animation_014kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-110, -138)]
+}
+
+[sub_resource type="Animation" id="Animation_bswci"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-110, -138), Vector2(-38, -138)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p57ef"]
+_data = {
+&"RESET": SubResource("Animation_014kd"),
+&"move": SubResource("Animation_bswci")
+}
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p2gul"]
 
 [node name="Game" type="Node2D" unique_id=459837407]
@@ -208,6 +246,29 @@ tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAA
 tile_set = SubResource("TileSet_ynkgx")
 
 [node name="Player" parent="Level 1" unique_id=822507870 instance=ExtResource("3_lnu2h")]
+
+[node name="Platforms" type="Node" parent="Level 1" unique_id=569321946]
+
+[node name="Platform" parent="Level 1/Platforms" unique_id=922851709 instance=ExtResource("5_iywne")]
+position = Vector2(-110, -138)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level 1/Platforms/Platform" unique_id=930872592]
+libraries/ = SubResource("AnimationLibrary_p57ef")
+autoplay = &"move"
+
+[node name="Platform2" parent="Level 1/Platforms" unique_id=1207820783 instance=ExtResource("5_iywne")]
+position = Vector2(-110, -138)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level 1/Platforms/Platform2" unique_id=1197511585]
+libraries/ = SubResource("AnimationLibrary_p57ef")
+autoplay = &"move"
+
+[node name="Platform3" parent="Level 1/Platforms" unique_id=1789333491 instance=ExtResource("5_iywne")]
+position = Vector2(-110, -138)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level 1/Platforms/Platform3" unique_id=1428187436]
+libraries/ = SubResource("AnimationLibrary_p57ef")
+autoplay = &"move"
 
 [node name="Bottom Boundary" type="StaticBody2D" parent="." unique_id=843465395]
 
