@@ -2,6 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://cjbdxkwp8iiq3" path="res://assets/sprites/coin.png" id="1_gf172"]
 
+[sub_resource type="GDScript" id="GDScript_lbhrr"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+	queue_free()
+	print(\"Coin Collected!\")
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl81w"]
 atlas = ExtResource("1_gf172")
 region = Rect2(0, 0, 16, 16)
@@ -99,12 +109,16 @@ radius = 6.0
 height = 12.0
 
 [node name="Area2D" type="Area2D" unique_id=1028099498]
+collision_mask = 2
+script = SubResource("GDScript_lbhrr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1649359818]
 sprite_frames = SubResource("SpriteFrames_ynkgx")
 animation = &"coin_spin"
 autoplay = "coin_spin"
-frame_progress = 0.6250263
+frame_progress = 0.6604818
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246203534]
 shape = SubResource("CapsuleShape2D_p2gul")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
