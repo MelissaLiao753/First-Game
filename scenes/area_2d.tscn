@@ -108,7 +108,7 @@ animations = [{
 radius = 6.0
 height = 12.0
 
-[node name="Area2D" type="Area2D" unique_id=1028099498]
+[node name="Coin" type="Area2D" unique_id=1028099498]
 collision_mask = 2
 script = SubResource("GDScript_lbhrr")
 
