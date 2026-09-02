@@ -107,7 +107,7 @@ size = Vector2(14, 14)
 [node name="Level 1" type="Node2D" unique_id=781711050]
 
 [node name="Slime" parent="." unique_id=1675535133 instance=ExtResource("1_014kd")]
-position = Vector2(57, -5)
+position = Vector2(57, -9)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Slime" unique_id=940714766]
 position = Vector2(-1, 0)
