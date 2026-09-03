@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3aonf4jvv5td"]
 
 [ext_resource type="PackedScene" uid="uid://di2kky6wkiwhy" path="res://scenes/slime.tscn" id="1_014kd"]
+[ext_resource type="FontFile" uid="uid://crmi4dklspoy6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_bswci"]
 
 [node name="Level 1" type="Node2D" unique_id=781711050]
 position = Vector2(-1, 0)
@@ -13,3 +14,23 @@ position = Vector2(127, -46)
 
 [node name="Slime3" parent="." unique_id=133998708 instance=ExtResource("1_014kd")]
 position = Vector2(-49, -92)
+
+[node name="Start" type="Label" parent="." unique_id=550737827]
+offset_left = -30.0
+offset_top = -51.0
+offset_right = 46.0
+offset_bottom = -28.0
+theme_override_colors/font_color = Color(0.48603886, 0.77645093, 0.876901, 1)
+theme_override_fonts/font = ExtResource("2_bswci")
+text = "Start"
+
+[node name="Tutorial text" type="Label" parent="Start" unique_id=816143479]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 16.0
+offset_right = 223.0
+offset_bottom = 39.0
+scale = Vector2(0.48000002, 0.5600012)
+theme_override_colors/font_color = Color(0.48603886, 0.77645093, 0.876901, 1)
+theme_override_fonts/font = ExtResource("2_bswci")
+text = "Avoid the slimes!"
